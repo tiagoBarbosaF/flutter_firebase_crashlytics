@@ -84,6 +84,7 @@
 ***
 
 ## Flutter project screens - myBank App
+<p float="left">
 <img src="assets/img/screen01.png" width="180">
 <img src="assets/img/screen02.png" width="180">
 <img src="assets/img/screen03.png" width="180">
@@ -94,3 +95,4 @@
 <img src="assets/img/screen08.png" width="180">
 <img src="assets/img/screen09.png" width="180">
 <img src="assets/img/screen10.png" width="180">
+</p>
