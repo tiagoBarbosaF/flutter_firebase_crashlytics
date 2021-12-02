@@ -68,6 +68,12 @@
 - Faça como eu fiz: Registrando exceções manualmente
 - Para saber mais: Registro de erros
 - O que aprendi?
+  - **Identificação de usuários**
+    - Aprendemos a registrar no relatório de erros quem é o usuário que vivenciou a exceção, com isso, é possível futuramente pensar em maneiras de rastrear o erro e tomar decisões de correção assertivas com base em casos específicos.
+  - **Dashboard do Crashlytics**
+    - Aprendemos a realizar a correta visualização de dados para entender e explorar ao máximo os recursos que o Crashlytics traz para nós. Visualizamos filtros, opções de busca, detalhamento de erros, chaves, dispositivo e disponibilidade de hardware e afins.
+  - **Configuração de debug**
+    - Vimos como configurar as chamadas do Crashlytics assim como a configuração inicial para que ele somente registre os relatórios de erro em ocasiões necessárias visando não poluir o dashboard com dados não relevantes ao analista de erros.
 
 ### Mensagem de erro
 - Zoned error
@@ -80,19 +86,13 @@
 - Projeto final do curso
 - Conclusão
 - O que aprendi?
-
-***
-
-## Flutter project screens - myBank App
-<p float="left">
-<img src="assets/img/screen01.png" width="180">
-<img src="assets/img/screen02.png" width="180">
-<img src="assets/img/screen03.png" width="180">
-<img src="assets/img/screen04.png" width="180">
-<img src="assets/img/screen05.png" width="180">
-<img src="assets/img/screen06.png" width="180">
-<img src="assets/img/screen07.png" width="180">
-<img src="assets/img/screen08.png" width="180">
-<img src="assets/img/screen09.png" width="180">
-<img src="assets/img/screen10.png" width="180">
-</p>
+  - **Definição das zonas de erro**
+    - Aprendemos a definir zonas de erro que garantem que nada passe despercebido pelo monitoramento de exceções caso algo ocorra algo de errado e o Flutter não seja capaz de perceber o ocorrido.
+  - **Implementação do SnackBar**
+    - Aprendemos a realizar a implementação do widget SnackBar na nossa aplicação e entendemos como ele pode ser uma alternativa discreta e que oferece uma funcionalidade para darmos ao usuário como um botão na mensagem, por exemplo.
+  - **Implementação do Toast**
+    - Vimos como podemos utilizar a extensão do Toast para exibir mensagens extremamente minimalistas e simples aos usuários de maneira objetiva e rápida.
+  - **Implementação do Giffy dialog**
+    - Através do Giffy dialog foi possível criarmos uma janela de mensagem de erro completamente customizada e que aceita a inserção de gif dentro dela. Este componente torna viável a criação de uma janela menos formal com a mensagem de erro.
+  - **Dark Patterns**
+    - Vimos o que são dark patterns e abrimos caminho para estudar mais a fundo o tema.

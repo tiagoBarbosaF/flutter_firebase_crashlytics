@@ -9,6 +9,7 @@ import 'package:mybank/models/contact.dart';
 import 'package:mybank/models/transaction.dart';
 import 'package:uuid/uuid.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class TransactionForm extends StatefulWidget {
   final Contact contact;
@@ -24,12 +25,15 @@ class _TransactionFormState extends State<TransactionForm> {
   final TextEditingController _valueController = TextEditingController();
   final TransactionWebClient _webClient = TransactionWebClient();
   final String transactionId = const Uuid().v4();
+  final GlobalKey<ScaffoldMessengerState> _scaffoldKey =
+      GlobalKey<ScaffoldMessengerState>();
 
   bool _sending = false;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: _scaffoldKey,
       appBar: AppBar(title: const Text("New transaction")),
       body: SingleChildScrollView(
         child: Padding(
@@ -145,10 +149,68 @@ class _TransactionFormState extends State<TransactionForm> {
 
   void _showFailureMessage(BuildContext context,
       {String message = "Unknown error"}) {
-    showDialog(
-        context: context,
-        builder: (contextDialog) {
-          return FailureDialog(message);
-        });
+    _showToast(message);
+    // final snackBar = SnackBar(
+    //   backgroundColor: Theme.of(context).colorScheme.primary,
+    //   elevation: 20,
+    //   content: Text(
+    //     message,
+    //     style: const TextStyle(
+    //       fontSize: 24,
+    //       fontWeight: FontWeight.bold,
+    //     ),
+    //   ),
+    // );
+    // ScaffoldMessenger.of(context).showSnackBar(snackBar);
+    // showDialog(
+    //     context: context,
+    //     builder: (contextDialog) {
+    //       return FailureDialog(message);
+    //     });
+  }
+
+  late FToast fToast;
+
+  @override
+  void initState() {
+    super.initState();
+    fToast = FToast();
+    fToast.init(context);
+  }
+
+  _showToast(String message) {
+    Widget toast = Container(
+      padding: const EdgeInsets.symmetric(horizontal: 18.0, vertical: 12.0),
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(25.0),
+        color: Theme.of(context).colorScheme.primary,
+      ),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          const Icon(
+            Icons.warning,
+            color: Colors.white,
+          ),
+          const SizedBox(
+            width: 12.0,
+          ),
+          Wrap(children: [
+            Text(
+              message,
+              style: const TextStyle(
+                  fontSize: 20,
+                  color: Colors.white),
+            ),
+          ]),
+        ],
+      ),
+    );
+
+    fToast.showToast(
+      child: toast,
+      gravity: ToastGravity.BOTTOM,
+      toastDuration: const Duration(seconds: 10),
+    );
   }
 }
